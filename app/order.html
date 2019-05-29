@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>我的订单</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+
+    <link rel="stylesheet" href="../lib/weui.min.css">
+    <link rel="stylesheet" href="../lib/weui.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="css/demos.css">
+    <link rel="stylesheet" href="../lib/need/layer.css">
+
+
+    <style>
+        body {
+            background-color: #F5F5F5;
+        }
+
+        .weui-navbar {
+            height: 40px;
+            align-items: center;
+        }
+
+        .weui-navbar__item:after {
+            border: 0px;
+        }
+
+        .weui-navbar:after {
+            border: 0px;
+        }
+
+        .weui-navbar__item.proinfo-tab-tit.weui-bar__item--on:before {
+            content: "";
+            width: 50px;
+            height: 5px;
+            position: absolute;
+            left: 50%;
+            margin-left: -25px;
+            bottom: -1px;
+            z-index: 10;
+            background: linear-gradient(0deg, rgba(200, 143, 58, 1), rgba(229, 173, 91, 1));
+            border-radius: 3px;
+        }
+
+        .weui-navbar__item.weui-bar__item--on {
+            color: #333333;
+            background-color: #FFFFFF;
+        }
+
+        .weui-navbar {
+            background-color: #FFFFFF;
+        }
+
+        .weui-navbar__item {
+            padding: 9px 0;
+            color: #333333;
+            font-size: 13px;
+        }
+
+        .wu {
+            padding-top: 95px;
+        }
+
+        .wu .wu-img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .wu img {
+            width: 163px;
+            height: 163px;
+        }
+
+        .wu .wu-tt {
+            font-size: 13px;
+            color: #666666;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 20px;
+        }
+
+        .xiang {
+            width: 92%;
+            margin: 0 4%;
+            height: auto;
+            background-color: #FFFFFF;
+            margin-top: 15px;
+        }
+
+        .state {
+            display: flex;
+            height: 42px;
+            width: 92%;
+            margin: 0 4%;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .state .state-time {
+            font-size: 13px;
+            color: #AFAFAF;
+        }
+
+        .state .state-tt {
+            font-size: 13px;
+            color: #333333;
+        }
+
+        .details {
+            width: 90%;
+            margin: 0 5%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+        }
+
+        .details-left {
+            width: 25%;
+            height: 25%;
+            overflow: hidden;
+        }
+
+        .details-left img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .details-right {
+            /*padding-left: 10px;*/
+            width: 100%;
+            margin-left: 10px;
+        }
+
+        .details-right .right-name {
+            font-size: 6px;
+            color: #666666;
+            /*width: 235px;*/
+            height: auto;
+        }
+
+        .details-right .right-price {
+            color: #C9903B;
+            font-size: 13px;
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            height: auto;
+        }
+
+        .weui-navbar + .weui-tab__bd {
+            padding-top: 40px;
+        }
+
+    </style>
+</head>
+<body ontouchstart>
+<div class="weui-tab">
+    <div class="weui-navbar">
+        <a class="weui-navbar__item proinfo-tab-tit tab-hash font-14 weui-bar__item--on" href="#tab1">
+            待支付
+        </a>
+        <a class="weui-navbar__item proinfo-tab-tit tab-hash font-14" href="#tab2">
+            待发货
+        </a>
+        <a class="weui-navbar__item proinfo-tab-tit tab-hash font-14" href="#tab3">
+            待收货
+        </a>
+        <a class="weui-navbar__item proinfo-tab-tit tab-hash font-14" href="#tab4">
+            已签收
+        </a>
+        <a class="weui-navbar__item proinfo-tab-tit tab-hash font-14" href="#tab5">
+            售后服务
+        </a>
+    </div>
+
+    <div class="weui-tab__bd">
+        <div id="tab1" class="weui-tab__bd-item tab-content">
+            <!--<div class="wu">-->
+            <!--<div class="wu-img"><img src="images/logoo.png"></div>-->
+            <!--<div class="wu-tt">暂无订单,快去挑选商品!</div>-->
+            <!--</div>-->
+            <div class="to_pay"></div>
+        </div>
+        <!--待发货-->
+        <div id="tab2" class="weui-tab__bd-item tab-content">
+            <div class="waiting"></div>
+        </div>
+        <!--待收货-->
+        <div id="tab3" class="weui-tab__bd-item tab-content">
+            <div class="is_deliver"></div>
+        </div>
+        <!--已签收-->
+        <div id="tab4" class="weui-tab__bd-item tab-content">
+            <div class="delivered"></div>
+        </div>
+        <!--售后服务-->
+        <div id="tab5" class="weui-tab__bd-item tab-content">
+            <div class="refund"></div>
+        </div>
+    </div>
+</div>
+
+<script src="../lib/jquery-2.1.4.js"></script>
+<script src="../lib/fastclick.js"></script>
+<script src="../lib/common.js"></script>
+<script src="../lib/layer.js"></script>
+<script>
+    $(function () {
+        FastClick.attach(document.body);
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        var hash = window.location.hash;
+        $('.tab-hash').each(function () {
+            if ($(this).attr('href') === hash) {
+                $(this).addClass('weui-bar__item--on')
+            } else {
+                $(this).removeClass('weui-bar__item--on')
+            }
+        });
+
+        $('.tab-content').each(function () {
+            if ($(this).attr('id') === hash.substring(1, hash.length)) {
+                $(this).addClass('weui-tab__bd-item--active')
+            } else {
+                $(this).removeClass('weui-tab__bd-item--active')
+            }
+        })
+    })
+</script>
+
+<script>
+    $(document).ready(function () {
+        function set_order_html(data, title, url) {
+            var order_html = '';
+            if (data.length) {
+                data.forEach(function (val) {
+                    if (url) {
+                        order_html += '<a href="' + url + '?id=' + val.id + '">';
+                    } else {
+                        order_html += '<a href="javascript:;">';
+                    }
+                    order_html += '<div class="xiang">';
+
+                    order_html += '<div class="state">';
+                    order_html += '<div class="state-time">' + val._created + '</div>';
+                    order_html += '<div class="state-tt">' + title + '</div>';
+                    order_html += '</div>';
+
+                    if (val.record.length) {
+                        val.record.forEach(function (info) {
+                            order_html += '<a>';
+                            order_html += '<div class="details">';
+                            order_html += '<div class="details-left"><img src="' + _BASE_API + info.img_one + '"></div>';
+                            order_html += '<div class="details-right">';
+                            order_html += '<div class="right-name">' + info.commodity_name + '</div>';
+                            order_html += '<div class="right-price">';
+                            order_html += '<div class="price">￥ ' + info.spec_price + '</div>';
+                            order_html += '<div class="num">* ' + info.number + '</div>';
+                            order_html += '</div>';
+                            order_html += '</div>';
+
+                            order_html += '</div>';
+                            order_html += '</a>'
+                        })
+                    }
+
+
+                    order_html += '</div>';
+                    order_html += '</a>';
+                })
+            }
+            return order_html
+        }
+
+        var embedded = {
+            record: true,
+            spec: true
+        };
+        sendAjax('api/order?embedded=' + JSON.stringify(embedded), '', 'get', function (resp) {
+            var data = resp._items;
+
+            var to_deliver = data.filter(function (val) {
+                return val.status === 'to_deliver'
+            });
+            var is_deliver = data.filter(function (val) {
+                return val.status === 'is_deliver'
+            });
+            var delivered = data.filter(function (val) {
+                return val.status === 'delivered'
+            });
+            var to_pay = data.filter(function (val) {
+                return val.status === 'to_pay'
+            });
+            var refund = data.filter(function (val) {
+                return val.status === 'is_refund' || val.status === 'refunded'
+            });
+
+            $('.waiting').html(set_order_html(to_deliver, '待发货', 'shipped.html'));
+            $('.is_deliver').html(set_order_html(is_deliver, '待收货', 'received.html'));
+            $('.delivered').html(set_order_html(delivered, '已签收', ''));
+            $('.to_pay').html(set_order_html(to_pay, '待支付', 'paid.html'));
+            $('.refund').html(set_order_html(refund, '售后申请', ''))
+
+        })
+    })
+</script>
+<script src="../js/jquery-weui.js"></script>
+
+</body>
+</html>

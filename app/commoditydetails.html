@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>商品详情</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+
+    <link rel="stylesheet" href="../lib/weui.min.css">
+    <link rel="stylesheet" href="../lib/weui.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="css/demos.css">
+    <link rel="stylesheet" href="../lib/need/layer.css">
+
+
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        body {
+            background-color: #e5e5e5;
+        }
+
+        .detail {
+            margin-bottom: 13px;
+        }
+
+        .details {
+            /*background-image: url("images/shangpingxq.png");*/
+            width: 100%;
+            height: 375px;
+        }
+
+        .fanhui img {
+            width: 25px;
+            height: 25px;
+
+        }
+
+        .details-wen {
+            width: 92%;
+            padding: 0 4%;
+            background-color: #FFFFFF;
+        }
+
+        .details-wen .name {
+            font-size: 14px;
+            color: #666666;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .details-wen .price {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+        }
+
+        .price .yuan {
+            font-size: 17px;
+            color: #666666;
+        }
+
+        .price .num {
+            font-size: 14px;
+            color: #666666;
+        }
+
+        .fanhui {
+            padding: 21px;
+        }
+
+        .introduce {
+            background-color: #FFFFFF;
+        }
+
+        .title {
+            padding-left: 4%;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            font-size: 15px;
+            color: #666666;
+        }
+
+        .jieshao {
+            padding-bottom: 10px;
+        }
+
+        .jieshao img {
+            width: 100%;
+            height: 267px;
+        }
+
+        .button {
+            width: 92%;
+            padding: 0 4%;
+            background-color: #FFFFFF;
+            height: 45px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #e5e5e5;
+        }
+
+        .car img {
+            width: 25px;
+            height: 21px;
+        }
+
+        .car .right {
+            position: absolute;
+            color: #FFFFFF;
+            font-size: 9px;
+            background-color: #666666;
+            line-height: 13px;
+            top: -25%;
+            text-align: center;
+            border-radius: 5px;
+            padding: 0 5px;
+            left: 70%;
+        }
+
+        .car {
+            position: absolute;
+            display: flex;
+            align-items: center;
+        }
+
+        .dbt {
+            width: 50%;
+            height: 40px;
+            background-color: #666666;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px 0px 0px 20px;
+            font-size: 14px;
+        }
+
+        .but {
+            width: 50%;
+            height: 40px;
+            background: linear-gradient(0deg, rgba(200, 143, 58, 1), rgba(229, 173, 91, 1));
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 0px 20px 20px 0px;
+            font-size: 14px;
+        }
+
+        .butt {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            right: 4%;
+            width: 50%;
+        }
+
+        .cov {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            position: fixed;
+            text-align: center;
+            font-size: 16px;
+            top: 0;
+            left: 0;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+
+        .con {
+            z-index: 1100;
+            width: 100%;
+            height: 70%;
+            background-color: white;
+            position: fixed;
+            bottom: 0;
+            font-size: 13px;
+            color: #666666;
+        }
+
+        .commen {
+            width: 90%;
+            padding: 0 5%;
+            padding-top: 15px;
+        }
+
+        .commen-title {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .commen-title .tit {
+            width: 80%;
+            display: flex;
+        }
+
+        .tit .img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .img img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .tit .price {
+            font-size: 17px;
+            color: #666666;
+            padding-top: 18px;
+            padding-left: 20px;
+        }
+
+        .close img {
+            width: 21px;
+            height: 21px;
+        }
+
+        .content {
+            font-size: 15px;
+            color: #666666;
+            display: flex;
+            justify-content: flex-start;
+            padding-top: 15px;
+        }
+
+        .content-tt {
+            display: flex;
+            padding-top: 8px;
+        }
+
+        .content-tt p {
+            font-size: 12px;
+            color: #666666;
+            background-color: #EDEDED;
+            border-radius: 3px;
+            margin-right: 10px;
+            width: 75px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .Spinner a i {
+            background-image: url("images/BuynBtn.png");
+        }
+
+        .spnumber {
+            height: 40px;
+            border-top: 1px solid #EDEDED;
+            border-bottom: 1px solid #EDEDED;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .spnumber .shopnum {
+            font-size: 15px;
+            color: #666666;
+        }
+
+        .login-button { /* 按钮美化 */
+            width: 100%;
+            height: 40px; /* 高度 */
+            border-width: 0px; /* 边框宽度 */
+            border-radius: 20px; /* 边框半径 */
+            background: linear-gradient(0deg, rgba(200, 143, 58, 1), rgba(229, 173, 91, 1)); /* 背景颜色 */
+            outline: none; /* 不显示轮廓线 */
+            color: #FFFFFF; /* 字体颜色 */
+            font-size: 17px; /* 字体大小 */
+            display: inline-block;
+            text-align: center;
+        }
+
+        .login {
+            width: 90%;
+            padding: 0 5%;
+            position: fixed;
+            bottom: 0;
+            height: 45px;
+            border-bottom: 1px solid #EDEDED;
+            border-top: 1px solid #EDEDED;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .price.active, .attr-type.active {
+            background: #b9b9ea;
+        }
+    </style>
+</head>
+<body>
+<div class="detail">
+    <div class="details">
+        <div class="fanhui" style="cursor: pointer">
+            <a href="home.html">
+                <img src="images/huijian.png">
+            </a>
+        </div>
+    </div>
+    <div class="details-wen">
+        <div class="name"></div>
+        <div class="price"><p class="yuan">¥ <span></span></p>
+            <p class="num">月销 <span></span></p></div>
+    </div>
+</div>
+<div class="introduce">
+    <div class="title">图文介绍</div>
+    <div class="desc_img"></div>
+    <!--<div class="jieshao"><img src="images/jieshao.png"></div>-->
+    <!--<div class="jieshao"><img src="images/jieshao.png"></div>-->
+</div>
+<div class="button">
+    <a href="shoppingcartnone.html">
+        <div class="car">
+            <img src="images/huiche.png">
+            <div class="right"></div>
+        </div>
+    </a>
+    <div class="butt">
+        <div class="dbt" onclick="showCon('加入')">加入购物车</div>
+        <div class="but" onclick="showCon('购买')">立即购买</div>
+    </div>
+</div>
+<div class="cov" style="display: none">
+    <div class="con">
+        <div class="commen">
+            <div class="commen-title">
+                <div class="tit">
+                    <div class="img price-img"></div>
+                    <div class="price">¥<span class="price-num"></span></div>
+                </div>
+                <div class="close" onclick="closeCon()"><img src="images/guanbi.png"></div>
+            </div>
+
+            <div class="content">净含量</div>
+            <div class="content-tt j-content">
+            </div>
+
+            <div class="attr"></div>
+
+            <div class="spnumber">
+                <div class="shopnum">购买数量</div>
+                <div class="pro-amount fr">
+                    <div class="Spinner"></div>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" name="number">
+        <input type="hidden" name="commodity_id">
+        <input type="hidden" name="spec_id">
+        <input type="hidden" name="attr_id">
+        <div class="login">
+            <button class="login-button">加&nbsp;入</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showCon(title) {
+        $(".cov").show();
+        var btn = $('.cov .login-button');
+        if (title === '购买') {
+            btn.addClass('pay_');
+            btn.removeClass('join_');
+        } else {
+            btn.addClass('join_');
+            btn.removeClass('pay_');
+        }
+        btn.text(title);
+    }
+
+    function closeCon() {
+        $(".cov").hide();
+    }
+</script>
+<script src="../lib/jquery-2.1.4.js"></script>
+<script src="../lib/fastclick.js"></script>
+<script src="../lib/common.js"></script>
+<script src="../lib/layer.js"></script>
+<script>
+    $(function () {
+        FastClick.attach(document.body);
+    });
+</script>
+<script src="../js/jquery-weui.js"></script>
+
+<script src="../js/jquery.Spinner.js" type="text/javascript"></script>
+<script>
+    $(function () {
+        FastClick.attach(document.body);
+    });
+</script>
+<script>
+    var info = {};
+    var i = 0;
+
+    function get_data() {
+        var id = getUrlParam('id');
+        var embedded = {
+            imgs: true,
+            spec: true,
+            attr: true
+        };
+        var sorts = 'attr_name';
+        sendAjax('api/commodity/' + id + '?embedded=' + JSON.stringify(embedded) + '&sort=' + sorts, '', 'GET', function (resp) {
+            $('.details-wen .name').text(resp.name);
+            $('.details-wen .yuan span').text(resp.spec.length ? resp.spec[0].price : '--');
+            $('.details-wen .num span').text(resp.monthly_sales || 0);
+
+            // 商品图片
+            var b_img = filter_val(resp.imgs, 'is_desc', false, 'url');
+            $('.details').css('background-image', "url(" + _BASE_API + b_img + ")");
+            $('.price-img').html('<img src="' + _BASE_API + b_img + '">');
+
+            //图文描述
+            var desc_img = filter_val_list(resp.imgs, 'is_desc', true);
+            var desc_img_html = '';
+            if (desc_img.length) {
+                desc_img.forEach(function (info) {
+                    desc_img_html += '<div class="jieshao"><img src="' + _BASE_API + info.url + '"></div>'
+                })
+            }
+            $(".desc_img").html(desc_img_html);
+
+            //购物车数量
+            $('.car .right').text(resp.shopping_cart.length || 0);
+
+            var attr = group_type(resp.attr, 'attr_name', 'attr_value');
+
+            // 商品信息
+            var attr_html = '';
+            if (Object.keys(attr).length) {
+                for (var k in attr) {
+                    attr_html += '<div class="content">' + k + '</div>';
+                    attr_html += '<div class="content-tt">';
+                    if (attr[k].length) {
+                        attr[k].forEach(function (v) {
+                            attr_html += '<p attr_key="' + k + '" attr_id="' + v + '" class="attr-type">' + v + '</p>';
+                        })
+                    }
+                    attr_html += '</div>'
+                }
+            }
+            $('.attr').html(attr_html);
+            $('.attr-type').click(function () {
+                var _this = $(this);
+                info[_this.attr('attr_key')] = _this.attr('attr_id');
+                _this.addClass('active').siblings('p').removeClass('active');
+            });
+
+            // 数量
+            $(".Spinner").text('');
+            $(".Spinner").Spinner({value: 1, len: 3, max: resp.stock});
+
+            //净含量
+            var j_content_html = '';
+            var spec_id = $('input[name="spec_id"]');
+            if (resp.spec && resp.spec.length) {
+                resp.spec.forEach(function (info, index) {
+                    if (index === 0) {
+                        spec_id.val(info.id);
+                        j_content_html += '<p class="price active" price_id="' + info.id + '" price="' + info.price + '">' + info.param + '</p>'
+                    } else
+                        j_content_html += '<p class="price" price_id="' + info.id + '" price="' + info.price + '">' + info.param + '</p>'
+                });
+
+                $('.price-num').text(resp.spec[0].price)
+            }
+            $('.j-content').html(j_content_html);
+            $('.price').click(function () {
+                var _this = $(this);
+                $('.price-num').text(_this.attr('price'));
+                spec_id.val(_this.attr('price_id'));
+                _this.addClass('active').siblings('p').removeClass('active');
+            })
+        })
+    }
+
+    get_data()
+</script>
+
+<script>
+    $(function () {
+        $(document).on("click", ".join_", function () {
+            var spec_id = $('input[name="spec_id"]').val();
+            console.log(spec_id);
+            if (!spec_id) {
+                LayerAlert1("请输入价格");
+                return false;
+            }
+
+            var number = $(".Amount").val();
+            try {
+                number = Number(number)
+            } catch (e) {
+                number = 0
+            }
+            if (number <= 0) {
+                LayerAlert1("数量必须大于0");
+                return false;
+            }
+
+            var data = {
+                spec: spec_id,
+                attr: JSON.stringify(info),
+                user: localStorage.getItem('user_id'),
+                number: number,
+                commodity: getUrlParam('id')
+            };
+            sendAjax('api/shopping_cart', data, 'POST', function (resp) {
+                get_data();
+                $(".cov").hide();
+            });
+
+        });
+
+        $(document).on("click", ".pay_", function () {
+            var number = $(".Amount").val();
+            var spec_id = $('input[name="spec_id"]').val();
+            window.location.href = 'shopping_pay_detail.html?id=' + getUrlParam('id') + '&number=' + number + '&spec=' + spec_id + '&attr=' + JSON.stringify(info)
+        })
+    })
+</script>
+</body>
+</html>
