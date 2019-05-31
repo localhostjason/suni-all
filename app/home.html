@@ -363,7 +363,7 @@
         <a href="messagenotification.html">
             <div class="alarm">
                 <img src="images/message.png">
-                <div class="right">4</div>
+                <div class="right"></div>
             </div>
         </a>
     </div>
@@ -392,70 +392,6 @@
 <!--<div class="recommend">
     <div class="biaoti">为你推荐</div>
     <div class="recommend-list">
-        <a>
-            <div class="list">
-                <div class="list-biao">
-                    <div class="list-up">
-                        <img src="images/shangping1.png">
-                    </div>
-                    <div class="list-down">
-                        <div class="down-name">商品名称商品名称商品名称商品名称</div>
-                        <div class="price">
-                            <div class="dowan-price">¥188.00</div>
-                            <div class="down-num">月销6666</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-        <a>
-            <div class="list">
-                <div class="list-biao">
-                    <div class="list-up">
-                        <img src="images/shangping1.png">
-                    </div>
-                    <div class="list-down">
-                        <div class="down-name">商品名称商品名称商品名称商品名称</div>
-                        <div class="price">
-                            <div class="dowan-price">¥188.00</div>
-                            <div class="down-num">月销6666</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-        <a>
-            <div class="list">
-                <div class="list-biao">
-                    <div class="list-up">
-                        <img src="images/shangping1.png">
-                    </div>
-                    <div class="list-down">
-                        <div class="down-name">商品名称商品名称商品名称商品名称</div>
-                        <div class="price">
-                            <div class="dowan-price">¥188.00</div>
-                            <div class="down-num">月销6666</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-        <a>
-            <div class="list">
-                <div class="list-biao">
-                    <div class="list-up">
-                        <img src="images/shangping1.png">
-                    </div>
-                    <div class="list-down">
-                        <div class="down-name">商品名称商品名称商品名称商品名称</div>
-                        <div class="price">
-                            <div class="dowan-price">¥188.00</div>
-                            <div class="down-num">月销6666</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
         <a>
             <div class="list">
                 <div class="list-biao">
@@ -591,7 +527,31 @@
             index = 1;
         }
 
-    })
+    });
+
+    function get_order() {
+        // to_pay = '待支付'
+        // to_deliver = '待发货'
+        // is_deliver = '待收货'
+        // delivered = '已签收'
+        // is_refund = '退款申请'
+        // refunded = '退款完成'
+        var params = {
+            status: ['to_pay', 'to_deliver', 'is_deliver', 'is_refund'],
+            is_deleted: false,
+        };
+        sendAjax('api/order?where=' + JSON.stringify(params), '', 'get', function (resp) {
+            var order_len = resp._items.length;
+            if (order_len) {
+                $('.alarm .right').show()
+            } else {
+                $('.alarm .right').hide()
+            }
+            $('.alarm .right').text(order_len)
+        })
+    }
+
+    get_order();
 
     $('.wx-pay').click(function () {
         var data = {

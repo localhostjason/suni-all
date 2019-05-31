@@ -285,7 +285,10 @@
             record: true,
             spec: true
         };
-        sendAjax('api/order?embedded=' + JSON.stringify(embedded), '', 'get', function (resp) {
+        var params = {
+            is_deleted: false
+        };
+        sendAjax('api/order?embedded=' + JSON.stringify(embedded) + '&where=' + JSON.stringify(params), '', 'get', function (resp) {
             var data = resp._items;
 
             var to_deliver = data.filter(function (val) {

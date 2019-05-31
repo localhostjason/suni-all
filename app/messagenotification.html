@@ -3,17 +3,17 @@
 <head>
     <title>消息通知</title>
     <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+    <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 ">
 
-<link rel="stylesheet" href="../lib/weui.min.css">
-<link rel="stylesheet" href="../lib/weui.css">
-<link rel="stylesheet" href="../css/jquery-weui.css">
-<link rel="stylesheet" href="css/demos.css">
-<link rel="stylesheet" href="../lib/need/layer.css">
+    <link rel="stylesheet" href="../lib/weui.min.css">
+    <link rel="stylesheet" href="../lib/weui.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="css/demos.css">
+    <link rel="stylesheet" href="../lib/need/layer.css">
 
 
     <style>
@@ -76,14 +76,15 @@
             height: 163px;
         }
 
-        .xiang{
+        .xiang {
             width: 92%;
             margin: 0 4%;
             height: auto;
-            background-color:#FFFFFF ;
+            background-color: #FFFFFF;
             margin-top: 15px;
         }
-        .state{
+
+        .state {
             display: flex;
             height: 42px;
             width: 92%;
@@ -91,36 +92,43 @@
             justify-content: space-between;
             align-items: center;
         }
-        .state .state-time{
+
+        .state .state-time {
             font-size: 13px;
             color: #AFAFAF;
         }
-        .state .state-tt{
+
+        .state .state-tt {
             font-size: 13px;
             color: #333333;
         }
-        .details{
+
+        .details {
             width: 92%;
             margin: 0 4%;
             display: flex;
             flex-direction: row;
             justify-content: flex-start;
         }
-        .details-left{
+
+        .details-left {
             width: 25%;
             height: 25%;
             overflow: hidden;
         }
-        .details-left img{
+
+        .details-left img {
             width: 100%;
             height: 100%;
         }
-        .details-right{
+
+        .details-right {
             /*padding-left: 10px;*/
             width: 100%;
             margin-left: 10px;
         }
-        .details-right .right-name{
+
+        .details-right .right-name {
             font-size: 6px;
             color: #666666;
             /*width: 235px;*/
@@ -131,7 +139,8 @@
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
         }
-        .details-right .right-price{
+
+        .details-right .right-price {
             color: #999999;
             font-size: 13px;
             display: flex;
@@ -140,25 +149,30 @@
             height: auto;
             padding-top: 5px;
         }
-        .weui-navbar + .weui-tab__bd{
+
+        .weui-navbar + .weui-tab__bd {
             padding-top: 76px;
         }
-        .message img{
+
+        .message img {
             width: 20px;
             height: 17px;
         }
-        .mesg{
+
+        .mesg {
             width: 16px;
             height: 20px;
         }
-        .message{
+
+        .message {
             display: flex;
             justify-content: space-between;
             align-items: center;
             width: 60%;
             height: 60px;
         }
-        .mesg{
+
+        .mesg {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -171,10 +185,10 @@
 <div class="weui-tab">
     <div class="weui-navbar">
         <a class="weui-navbar__item proinfo-tab-tit font-14 weui-bar__item--on" href="#tab1">
-          <div class="message">
-              <img src="images/xiaoche.png">
-              <p>交易配送</p>
-          </div>
+            <div class="message">
+                <img src="images/xiaoche.png">
+                <p>交易配送</p>
+            </div>
         </a>
         <a class="weui-navbar__item proinfo-tab-tit font-14" href="#tab2">
             <div class="mesg ">
@@ -187,30 +201,12 @@
 
     <div class="weui-tab__bd">
         <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
-            <div class="xiang">
-                <div class="state">
-                    <div class="state-time">支付成功</div>
-                    <div class="state-tt">19/03/13&nbsp;12:22</div>
-                </div>
-                <a>
-                    <div class="details">
-                        <div class="details-left">
-                            <img src="images/shangping.png">
-                        </div>
-                        <div class="details-right">
-                            <div class="right-name">商品名称商品名称商品名称商品名称商品名称商品名称</div>
-                            <div class="right-price">
-                                <div class="price">订单编号:</div>
-                                <div class="num">123321123321123321</div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
+            <div class="tab-01"></div>
         </div>
         <!--待发货-->
         <div id="tab2" class="weui-tab__bd-item">
-            <div class="xiang">
+            <div class="tab-02"></div>
+            <!--<div class="xiang">
                 <div class="state">
                     <div class="state-time">订单已取消</div>
                     <div class="state-tt">19/03/13&nbsp;12:22</div>
@@ -229,7 +225,7 @@
                         </div>
                     </div>
                 </a>
-            </div>
+            </div>-->
         </div>
 
     </div>
@@ -240,11 +236,50 @@
 <script src="../lib/common.js"></script>
 <script src="../lib/layer.js"></script>
 <script>
-  $(function() {
-    FastClick.attach(document.body);
-  });
+    $(function () {
+        FastClick.attach(document.body);
+    });
 </script>
 <script src="../js/jquery-weui.js"></script>
+
+<script>
+    $(document).ready(function () {
+        function set_html(data) {
+            var html = '';
+            if (data.length) {
+                data.forEach(function (val) {
+                    html += '<div class="xiang">';
+                    html += '<div class="state-time">' + val.status + '</div><div class="state-tt">' + val._updated + '</div>';
+
+                    html += '<a><div class="details">';
+                    html += '<div class="details-left"><img src="images/shangping.png"></div>';
+                    html += '<div class="details-right"><div class="right-name"></div><div class="right-price"><div class="price">订单编号:</div><div class="num">' + val.id + '</div></div></div>';
+                    html += '</div></a>';
+
+                    html += '</div>';
+                })
+            }
+            return html
+        }
+
+        var params = {
+            is_deleted: false
+        };
+        sendAjax('api/order?where=' + JSON.stringify(params), '', 'get', function (resp) {
+            var comm_order = resp._items.filter(function (val) {
+                return val.status !== 'is_refund' && val.status !== 'refunded'
+            });
+            var remove_order = resp._items.filter(function (val) {
+                return val.status === 'is_refund' && val.status === 'refunded'
+            });
+
+            $('.tab-01').html(set_html(comm_order));
+            $('.tab-02').html(set_html(remove_order))
+
+
+        })
+    })
+</script>
 
 </body>
 </html>
