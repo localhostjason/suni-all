@@ -385,7 +385,7 @@
 </div>
 
 <div>
-    <button onclick="pay">测试支付</button>
+    <button class="wx-pay">测试支付</button>
 </div>
 
 <!--为你推荐 -->
@@ -593,14 +593,15 @@
 
     })
 
-    function pay() {
+    $('.wx-pay').click(function () {
         var data = {
             user_id: localStorage.getItem('user_id')
         };
+        alert(data)
         sendAjax('api/tx/pay', data, 'POST', function (resp) {
 
         })
-    }
+    })
 
 </script>
 
