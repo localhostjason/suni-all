@@ -283,7 +283,7 @@
                         com_html += '<div class="details-right">';
                         com_html += '<div class="right-name">' + info.commodity_name + '</div>';
                         com_html += '<div class="right-price">';
-                        com_html += '<div class="price">￥' + info.spec_price + '</div>';
+                        com_html += '<div class="price">￥' + info.spec_price * localStorage.getItem('discount') + '</div>';
                         com_html += '<div class="num">*' + info.number + '</div>';
                         com_html += '</div>';
                         com_html += '</div>';

@@ -182,9 +182,9 @@
         <div class="weui-cell__hd"><img src="images/dibiao.png"></div>
         <div class="weui-cell__bd juti">
             <div class="address-info" style="display: none">
-                <span class="wen">小灰灰</span>
-                <span class="num">188888888</span>
-                <div class="details">江苏省常州市武进区湖塘镇大学城科教城信息产业园研发楼226</div>
+                <span class="wen"></span>
+                <span class="num"></span>
+                <div class="details"></div>
             </div>
             <div class="dizhi">暂无收货地址,请先添加默认地址</div>
         </div>
@@ -256,7 +256,7 @@
             });
             price = spec.length ? spec[0].price : 0;
             com_detail_html += '<div class="right-name">' + data.name + '</div>' +
-                '<div class="right-price"><div class="price">￥' + price + '</div>' +
+                '<div class="right-price"><div class="price">￥' + price * localStorage.getItem('discount') + '</div>' +
                 '<div class="num">*' + getUrlParam('number') + '</div></div>';
 
             com_detail_html += '</div>';
@@ -278,7 +278,7 @@
         $('.zhifu-tt').click(function (resp) {
             var data = {
                 user: Number(localStorage.getItem('user_id')),
-                amount: price * Number(getUrlParam('number')),
+                amount: price * Number(getUrlParam('number')) * localStorage.getItem('discount'),
                 number: Number(getUrlParam('number')),
                 commodity_info: JSON.stringify(commodity_info),
                 commodity: commodity,

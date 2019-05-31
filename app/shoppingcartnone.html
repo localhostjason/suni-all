@@ -398,7 +398,7 @@
                     shopping_html += '<div class="xiang-left">';
                     shopping_html += '<div class="left-title">' + val.commodity.name + '</div>';
                     shopping_html += '<div class="left-price">';
-                    shopping_html += '<div class="prices">¥<em class="prices-number">' + val.spec.price + '</em></div>';
+                    shopping_html += '<div class="prices">¥<em class="prices-number">' + val.spec.price * localStorage.getItem('discount') + '</em></div>';
                     shopping_html += '<div class="pro-amount fr">';
                     shopping_html += '<div class="Spinner sp' + index + '"></div>';
                     shopping_html += '</div>';

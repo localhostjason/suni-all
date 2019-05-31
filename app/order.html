@@ -263,7 +263,7 @@
                             order_html += '<div class="details-right">';
                             order_html += '<div class="right-name">' + info.commodity_name + '</div>';
                             order_html += '<div class="right-price">';
-                            order_html += '<div class="price">￥ ' + info.spec_price + '</div>';
+                            order_html += '<div class="price">￥ ' + info.spec_price * localStorage.getItem('discount') + '</div>';
                             order_html += '<div class="num">* ' + info.number + '</div>';
                             order_html += '</div>';
                             order_html += '</div>';
@@ -288,7 +288,8 @@
         var params = {
             is_deleted: false
         };
-        sendAjax('api/order?embedded=' + JSON.stringify(embedded) + '&where=' + JSON.stringify(params), '', 'get', function (resp) {
+        var sorts = '-id';
+        sendAjax('api/order?embedded=' + JSON.stringify(embedded) + '&where=' + JSON.stringify(params) + '&sort=' + sorts, '', 'get', function (resp) {
             var data = resp._items;
 
             var to_deliver = data.filter(function (val) {
