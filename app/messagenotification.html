@@ -56,7 +56,6 @@
             background-size: 100% 100%;
         }
 
-
         .weui-navbar__item {
             padding: 0;
             color: #FFFFFF;
@@ -81,7 +80,7 @@
             margin: 0 4%;
             height: auto;
             background-color: #FFFFFF;
-            margin-top: 15px;
+            margin-top: 60px;
         }
 
         .state {
@@ -206,7 +205,7 @@
         <!--待发货-->
         <div id="tab2" class="weui-tab__bd-item">
             <div class="tab-02"></div>
-            <!--<div class="xiang">
+            <div class="xiang">
                 <div class="state">
                     <div class="state-time">订单已取消</div>
                     <div class="state-tt">19/03/13&nbsp;12:22</div>
@@ -225,7 +224,7 @@
                         </div>
                     </div>
                 </a>
-            </div>-->
+            </div>
         </div>
 
     </div>
@@ -248,15 +247,25 @@
             var html = '';
             if (data.length) {
                 data.forEach(function (val) {
-                    html += '<div class="xiang">';
-                    html += '<div class="state-time">' + val.status + '</div><div class="state-tt">' + val._updated + '</div>';
 
-                    html += '<a><div class="details">';
-                    html += '<div class="details-left"><img src="images/shangping.png"></div>';
-                    html += '<div class="details-right"><div class="right-name"></div><div class="right-price"><div class="price">订单编号:</div><div class="num">' + val.id + '</div></div></div>';
-                    html += '</div></a>';
+                    if (val.record.length) {
+                        val.record.forEach(function (info) {
+                            html += '<div class="xiang">';
 
-                    html += '</div>';
+                            html += '<div class="state">';
+                            html += '<div class="state-time">' + order_status(val.status) + '</div>';
+                            html += '<div class="state-tt">' + info._updated + '</div>';
+                            html += '</div>';
+
+
+                            html += '<a><div class="details">';
+                            html += '<div class="details-left"><img src="' + _BASE_API + info.img_one + '"></div>';
+                            html += '<div class="details-right"><div class="right-name">'+ info.commodity_name +'</div><div class="right-price"><div class="price">订单编号:</div><div class="num">' + val.id + '</div></div></div>';
+                            html += '</div></a>';
+
+                            html += '</div>';
+                        })
+                    }
                 })
             }
             return html
@@ -265,13 +274,17 @@
         var params = {
             is_deleted: false
         };
-        sendAjax('api/order?where=' + JSON.stringify(params), '', 'get', function (resp) {
+        var embedded = {
+            record: true
+        };
+        sendAjax('api/order?where=' + JSON.stringify(params) + '&embedded=' + JSON.stringify(embedded), '', 'get', function (resp) {
             var comm_order = resp._items.filter(function (val) {
                 return val.status !== 'is_refund' && val.status !== 'refunded'
             });
             var remove_order = resp._items.filter(function (val) {
                 return val.status === 'is_refund' && val.status === 'refunded'
             });
+
 
             $('.tab-01').html(set_html(comm_order));
             $('.tab-02').html(set_html(remove_order))
