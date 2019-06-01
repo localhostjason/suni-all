@@ -85,10 +85,10 @@
                 var type = res.type;
 
                 var wx_code = getUrlParam('code');
-                // if (!wx_code) {
-                //     LayerAlert1('参数不对');
-                //     return false
-                // }
+                if (!wx_code) {
+                    LayerAlert1('参数不对');
+                    return false
+                }
 
                 localStorage.setItem("user_id", res.data.id);
                 localStorage.setItem('phone', res.data.phone);
