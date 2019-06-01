@@ -364,7 +364,7 @@
                 localStorage.removeItem('total_profit');
                 localStorage.removeItem('code');
 
-                window.location.href = '/login'
+                window.location.href = 'login.html?code=' + localStorage.getItem('code')
             })
         })
     })

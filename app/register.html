@@ -145,7 +145,7 @@
     <button class="login-button">注 册</button>
 </div>
 <div class="return">
-    <div><a href="/login">已有账号，去登录</a></div>
+    <div><a class="return_href" href="">已有账号，去登录</a></div>
 </div>
 
 <script src="../lib/jquery-2.1.4.js"></script>
@@ -194,6 +194,8 @@
 </script>
 <script>
     $(function () {
+        $('.return_href').attr('href', 'login.html?code=' + localStorage.getItem('code'));
+
         $(".login-button").on('click', function () {
             var tel = $("input[name='phone']").val();
             var password = $("input[name='password']").val();
