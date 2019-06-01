@@ -578,7 +578,7 @@
             user_id: localStorage.getItem('user_id')
         };
         sendAjax('api/tx/pay', data, 'POST', function (resp) {
-            var appId = resp.appid;
+            var appId = resp.appId;
             var nonceStr = resp.nonceStr;
             var timeStamp = resp.timeStamp;
             var _package = resp.package;
