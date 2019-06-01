@@ -475,15 +475,6 @@
                 }
             });
     }
-
-    if (typeof WeixinJSBridge == "undefined") {
-        if (document.addEventListener) {
-            document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
-        } else if (document.attachEvent) {
-            document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
-            document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
-        }
-    }
 </script>
 
 <script>
@@ -596,7 +587,18 @@
             var paySign = resp.sign;
             var total_fee = 1;
 
-            onBridgeReady(appId, nonceStr, prepay_id, paySign, total_fee)
+            if (typeof WeixinJSBridge === "undefined") {
+                if (document.addEventListener) {
+                    document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+                } else if (document.attachEvent) {
+                    document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+                    document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+                }
+            } else {
+                onBridgeReady(appId, nonceStr, prepay_id, paySign, total_fee)
+            }
+
+
 
         })
     })
