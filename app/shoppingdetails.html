@@ -259,7 +259,7 @@
                     com_detail_html += '<div class="details-right">';
 
                     com_detail_html += '<div class="right-name">' + val.commodity.name + '</div>' +
-                        '<div class="right-price"><div class="price">￥' + val.spec.price + '</div>' +
+                        '<div class="right-price"><div class="price">￥' + val.spec.price * localStorage.getItem('discount') + '</div>' +
                         '<div class="num">*' + val.number + '</div></div>';
 
                     com_detail_html += '</div>';
