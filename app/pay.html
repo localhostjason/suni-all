@@ -216,14 +216,30 @@
                 return false;
             }
 
-            var params = {
-                status: 'to_deliver',
-                pay_action: pay_action,
-                pay_time: timeStamp2String(new Date().getTime())
+            var data = {
+                user_id: localStorage.getItem('user_id'),
+                order_id: order
             };
-            //http://127.0.0.1:3333/dist/demos/pay.html?id=1
-            sendAjax('api/order/' + order, params, 'patch', function (resp) {
-                window.location.href = 'order.html#tab2'
+            sendAjax('api/tx/pay', data, 'POST', function (resp) {
+                var appId = resp.appId;
+                var nonceStr = resp.nonceStr;
+                var timeStamp = resp.timeStamp;
+                var _package = resp.package;
+                var signType = resp.signType;
+                var paySign = resp.sign;
+
+                if (typeof WeixinJSBridge === "undefined") {
+                    if (document.addEventListener) {
+                        document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+                    } else if (document.attachEvent) {
+                        document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+                        document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+                    }
+                } else {
+                    onBridgeReady(appId, timeStamp, nonceStr, _package, signType, paySign)
+                }
+
+
             })
         })
     })
