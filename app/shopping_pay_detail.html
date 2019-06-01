@@ -287,7 +287,7 @@
             };
 
             sendAjax('api/order', data, 'post', function (resp) {
-                window.location.href = 'pay.html?id=' + resp.id
+                window.location.href = 'pay.html?id=' + resp.id + '&amount=' + data['amount']
             });
         })
     })

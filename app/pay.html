@@ -218,7 +218,8 @@
 
             var data = {
                 user_id: localStorage.getItem('user_id'),
-                order_id: order
+                order_id: order,
+                total_fee: Number(getUrlParam('amount'))
             };
             sendAjax('api/tx/pay', data, 'POST', function (resp) {
                 var appId = resp.appId;

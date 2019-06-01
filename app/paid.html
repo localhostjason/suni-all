@@ -239,7 +239,7 @@
             <div class="shouhou-tt delete-order">删除订单</div>
         </div>
         <div class="shouhou">
-            <div class="shouhou-tt">立即支付</div>
+            <div class="shouhou-tt pay-now">立即支付</div>
         </div>
     </div>
 </div>
@@ -309,6 +309,35 @@
         $('.delete-order').click(function () {
             sendAjax('api/order/' + getUrlParam('id'), '', 'delete', function () {
                 window.location.href = 'order.html#tab1'
+            })
+        });
+
+        $('.pay-now').click(function () {
+            var data = {
+                user_id: localStorage.getItem('user_id'),
+                order_id: getUrlParam('id'),
+                total_fee: Number($('.amount-total').text())
+            };
+            sendAjax('api/tx/pay', data, 'POST', function (resp) {
+                var appId = resp.appId;
+                var nonceStr = resp.nonceStr;
+                var timeStamp = resp.timeStamp;
+                var _package = resp.package;
+                var signType = resp.signType;
+                var paySign = resp.sign;
+
+                if (typeof WeixinJSBridge === "undefined") {
+                    if (document.addEventListener) {
+                        document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+                    } else if (document.attachEvent) {
+                        document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+                        document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+                    }
+                } else {
+                    onBridgeReady(appId, timeStamp, nonceStr, _package, signType, paySign)
+                }
+
+
             })
         })
     })
