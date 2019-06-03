@@ -146,6 +146,10 @@
     <div class="price"><span>￥</span><input placeholder="请输入金额"
                                             style="padding-left:30px;outline: none;border: none;background-color: #f8f8f8;font-size: 21px"
                                             type="number" name="num"/></div>
+    <div class="mode">到账金额（手续费：<span class="cost"></span>）</div>
+    <div class="price"><span>￥</span><input readonly
+                                            style="padding-left:30px;outline: none;border: none;background-color: #f8f8f8;font-size: 21px"
+                                            type="number" name="real_num"/></div>
     <div class="log">
         <button class="log-button">提&nbsp;现</button>
     </div>
@@ -164,10 +168,28 @@
 </body>
 <script>
     $(function () {
+        var cost = null;
+        sendAjax('api/withdraw_setting', '', 'get', function (resp) {
+            var data = resp._items;
+            if (!data.length) {
+                $('.cost').text('0%');
+                cost = 0;
+            } else {
+                $('.cost').text(data[0].cost + '%');
+                cost = data[0].cost
+            }
+
+        });
+
+        $("input[name='num']").change(function () {
+            $("input[name='real_num']").val($(this).val() * (100 - cost) / 100)
+        });
+
         $(".log-button").on('click', function () {
             var num = $("input[name='num']").val();
+            var real_num = $("input[name='real_num']").val();
             var withdrawal_method = $('input[name="btn"]:checked').attr('withdrawal_method');
-            if (num == '') {
+            if (!num) {
                 LayerAlert1("请输入提现金额");
                 return false;
             }
@@ -176,7 +198,11 @@
                 return false;
             }
             //console.log(withdrawal_method);
-            var data = {number: parseFloat(num), withdrawal_method: withdrawal_method};
+            var data = {
+                number: parseFloat(num),
+                real_num: parseFloat(real_num),
+                withdrawal_method: withdrawal_method
+            };
             sendAjax('api/rebate_detail', data, 'post', function (res) {
 
                 sendAjax('api/user/' + localStorage.getItem('user_id'), '', 'GET', function (resp) {

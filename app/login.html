@@ -104,10 +104,10 @@
                         localStorage.setItem('discount', info[0].discount / 100)
                     }
 
-                    sendAjax('api/open_id?code=' + wx_code + '&user_id=' + res.data.id, '', 'get', function (resp) {
+                    // sendAjax('api/open_id?code=' + wx_code + '&user_id=' + res.data.id, '', 'get', function (resp) {
                         LayerAlert1("登录成功");
                         window.location.href = "home.html";
-                    });
+                    // });
                 });
 
 
