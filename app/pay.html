@@ -108,6 +108,9 @@
             height: 50px;
             border-bottom: 1px solid #F5F5F5;
         }
+		.xz input{
+			margin-right:10px;
+		}
 
         .dingdanxi .xinxi {
             color: #333333;
@@ -180,9 +183,11 @@
 <div class="kuang">
     <div class="dingdanxi">
         <div class="xinxi">支付方式</div>
-        <!--<input type="radio" name="pay_action" value="alipay">支付宝支付-->
-        <input type="radio" name="pay_action" value="we_chart">微信支付
+        <div class="xz">
+		<!--<input type="radio" name="pay_action" value="alipay">支付宝支付-->
+        <input type="radio" name="pay_action" checked="checked" value="we_chart">微信支付
         <!--<input type="radio" name="pay_action" value="bank_card">银行卡支付-->
+		</div>
     </div>
 </div>
 <div class="kuangg">

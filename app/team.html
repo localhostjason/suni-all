@@ -108,6 +108,40 @@
         .team-meg .meg-tt {
             padding-left: 13px;
         }
+		.yqm .names{
+			line-height:45px;
+		}
+		.inputs {
+			height: 45px;
+			background: rgba(237, 237, 237, 1);
+			border-radius: 23px;
+			font-size: 13px;
+			color: #666666;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+		.inputs input {
+			width: 60%;
+			padding-left: 18px;
+			width: 100%;
+			border: 0;
+			outline: 0;
+			-webkit-appearance: none;
+			background-color: transparent;
+			font-size: inherit;
+			color: inherit;
+			height: 1.47058824em;
+			line-height: 1.47058824;
+		}
+		.inputs .acc {
+			font-size: 13px;
+			color: #C88F3A;
+			border: none;
+			background: none;
+			width: 20%;
+			padding-right: 18px;
+		}
     </style>
 </head>
 <body>
@@ -122,10 +156,12 @@
             </div>
         </div>
     </div>
-    <div>
-        <span>邀请新人加入团队：</span>
-        <input name="code">
-        <button class="acc">邀请</button>
+    <div class="yqm">
+        <div class="names">请填写邀请人邀请码：</div>
+		<div class="inputs">
+			<input name="code">
+			<button class="acc">邀请</button>
+		</div>
     </div>
     <div class="team_content"></div>
 </div>

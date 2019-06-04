@@ -282,7 +282,7 @@ header,.weui-navbar{
 .weui-media-box__bd .ord-pro-list:first-child{margin-top:0; padding-top:0; border-top:0;}
 
 .weui-media-box_appmsg .weui-media-box__hd.check-w{width:33px; margin-right:5px;}
-.weui-cell__hd.cat-check{margin-top:29px;}
+.weui-cell__hd.cat-check{/*margin-top:29px;*/}
 .weui-cell__hd.cat-check2{margin-top:0; display:inline-block;}
 
 .weui-tabbar__item.npd,.wy-foot-menu .npd{padding:2px 0;}

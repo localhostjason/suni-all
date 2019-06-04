@@ -6,14 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-    <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
-">
+    <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
 
     <link rel="stylesheet" href="../lib/weui.min.css">
     <link rel="stylesheet" href="../lib/weui.css">
     <link rel="stylesheet" href="../css/jquery-weui.css">
     <link rel="stylesheet" href="css/demos.css">
     <link rel="stylesheet" href="../lib/need/layer.css">
+<script src="../lib/jquery-2.1.4.js"></script>
+<script>
+	$(function(){
+		$("label").click(function(){
+			$(this).css("background","#000")
+		})
+	})
+</script>
 
 
     <style>
@@ -27,7 +34,35 @@
             height: 80px;
             background-repeat: no-repeat;
             background-size: 100% 100%;
+			display:flex;
+			justify-content: space-around;
+			align-items: center;
         }
+        .bg input{
+			display:none;
+		}
+		.background{
+			display:flex;
+			justify-content: space-around;
+			align-items: center;
+        }
+        .background input{
+			display:none;
+		}
+        .bg label, .background label{
+			width:20px;
+			height:20px;
+			border-radius:20px;
+			background:#fff;
+			margin-left: 12px;
+			border: 1px solid #cdcdcd;
+		}
+        .bg label:hover{
+			background:#000;
+		}
+        .background label:hover{
+			background:#000;
+		}
 
         .address {
             width: 90%;
@@ -90,8 +125,8 @@
 </head>
 <div>
     <div class="address_x"></div>
-    <div>
-        <button class="select_address">确认</button>
+    <div style="text-align:center;">
+        <button class="select_address" style="width:90%;margin:20px auto;background: #C88F3A;height: 45px;line-height: 45px;color: #FFFFFF;font-size: 17px;border:none">确认</button>
     </div>
 </div>
 <a href="newaddress.html">
@@ -100,8 +135,8 @@
     </div>
 </a>
 <body>
-<script src="../lib/jquery-2.1.4.js"></script>
 <script src="../lib/fastclick.js"></script>
+<script src="../lib/common.js"></script>
 <script src="../lib/common.js"></script>
 <script src="../lib/layer.js"></script>
 <script>
@@ -120,7 +155,7 @@
             data.forEach(function (val) {
                 var bg = val.is_default ? 'bg' : 'background';
                 address_html += '<a href="newaddress.html?id=' + val.id + '"><div class="address"><div class="' + bg + '">';
-                address_html += '<input type="radio" name="address" value="' + val.id + '">';
+                address_html += '<label for="xiangxi' + val.id + '" class="weui-check__label"></label><input type="radio" name="address" id="xiangxi' + val.id + '" value="' + val.id + '">';
 
                 address_html += '<div class="xiangxi">';
                 address_html += '<div class="xiangxi-right">';
