@@ -271,11 +271,17 @@
             });
             $('.com-detail').html(com_detail_html)
         });
-        $('.total-amount').text(price * Number(getUrlParam('number')));
+        $('.total-amount').text(price * Number(getUrlParam('number') * localStorage.getItem('discount')));
 
 
         // 提交订单
         $('.zhifu-tt').click(function (resp) {
+            var role = localStorage.getItem('role');
+            if (role === 'vip_user' || role === 'official_user') {
+                LayerAlert1("vip用户和官方不能提交订单");
+                return false;
+            }
+
             var data = {
                 user: Number(localStorage.getItem('user_id')),
                 amount: price * Number(getUrlParam('number')) * localStorage.getItem('discount'),
