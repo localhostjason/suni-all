@@ -313,6 +313,12 @@
         });
 
         $('.pay-now').click(function () {
+            var role = localStorage.getItem('user_type');
+            if (role === 'vip_user' || role === 'official_user') {
+                LayerAlert1("vip用户和官方不能在线支付");
+                return false;
+            }
+
             var data = {
                 user_id: localStorage.getItem('user_id'),
                 order_id: getUrlParam('id'),
