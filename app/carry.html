@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>提现</title>
+    <title>积分兑换</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -118,7 +118,7 @@
 </head>
 <body>
 <div class="box">
-    <div class="mode">提现方式</div>
+    <div class="mode">兑现方式</div>
     <div class="choo">
         <div class="choose">
             <div class="choose-tt">微信号</div>
@@ -142,11 +142,11 @@
             </div>
         </div>
     </div>
-    <div class="mode">提现金额</div>
+    <div class="mode">积分数</div>
     <div class="price"><span>￥</span><input placeholder="请输入金额"
                                             style="padding-left:30px;outline: none;border: none;background-color: #f8f8f8;font-size: 21px"
                                             type="number" name="num"/></div>
-    <div class="mode">到账金额（手续费：<span class="cost"></span>）</div>
+    <div class="mode">实际积分（手续费：<span class="cost"></span>）</div>
     <div class="price"><span>￥</span><input readonly
                                             style="padding-left:30px;outline: none;border: none;background-color: #f8f8f8;font-size: 21px"
                                             type="number" name="real_num"/></div>
@@ -190,11 +190,11 @@
             var real_num = $("input[name='real_num']").val();
             var withdrawal_method = $('input[name="btn"]:checked').attr('withdrawal_method');
             if (!num) {
-                LayerAlert1("请输入提现金额");
+                LayerAlert1("请输入积分数");
                 return false;
             }
             if (!$("input[name='btn']").is(":checked")) {
-                LayerAlert1("请勾选提现方式");
+                LayerAlert1("请勾选兑换方式");
                 return false;
             }
             //console.log(withdrawal_method);
@@ -206,7 +206,7 @@
             sendAjax('api/rebate_detail', data, 'post', function (res) {
 
                 sendAjax('api/user/' + localStorage.getItem('user_id'), '', 'GET', function (resp) {
-                    LayerAlert1("提现成功");
+                    LayerAlert1("兑换成功");
                     setTimeLoad(function () {
                         window.location.href = "commission.html"
                     })

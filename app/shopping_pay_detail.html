@@ -278,7 +278,7 @@
         $('.zhifu-tt').click(function (resp) {
             var role = localStorage.getItem('role');
             if (role === 'vip_user' || role === 'official_user') {
-                LayerAlert1("vip用户和官方不能提交订单");
+                LayerAlert1("vip用户和官方不能支付");
                 return false;
             }
 

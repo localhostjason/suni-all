@@ -127,14 +127,14 @@
             <div class="person-meg">
                 <div><img src="images/portrait.png"></div>
                 <div class="meg-tt">
-                    <p class="name">888888.00元</p>
-                    <p class="yong">佣金金额</p>
+                    <p class="name"></p>
+                    <p class="yong">积分数</p>
                 </div>
             </div>
-            <div class="person-tt"><a href="carry.html">提现</a></div>
+            <div class="person-tt"><a href="carry.html">兑换</a></div>
         </div>
     </div>
-    <div class="detailed">佣金明细</div>
+    <div class="detailed">积分明细</div>
     <div class="rebate"></div>
     <!--<div class="carry">-->
     <!--<div class="carry-num">-->
@@ -175,7 +175,7 @@
                     rebate_html += '<div class="carry">';
 
                     rebate_html += '<div class="carry-num">';
-                    rebate_html += '<div class="num-name">' + (val.type === 'profit' ? '积分' : '提现') + '</div>';
+                    rebate_html += '<div class="num-name">' + (val.type === 'profit' ? '积分' : '兑换数') + '</div>';
                     rebate_html += '<div class="num-yuan" id="money">' + (val.type === 'profit' ? '+' : '-') + val.number + '</div>';
                     rebate_html += '</div>';
 

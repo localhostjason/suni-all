@@ -197,9 +197,9 @@
             合计: <span class="heji-number"></span>
         </div>
         <div class="anniu">
-            <div class="shan">
-                <a href="javascript:;" class="wy-delete">删除</a>
-            </div>
+<!--            <div class="shan">-->
+<!--                <a href="javascript:;" class="wy-delete">删除</a>-->
+<!--            </div>-->
             <a href="javascript:void (0)">
                 <div class="jiesuan">
                     <p>结算</p>
@@ -467,6 +467,12 @@
 <script>
     $(document).ready(function () {
         $('.jiesuan').click(function () {
+            var role = localStorage.getItem('role');
+            if (role === 'vip_user' || role === 'official_user') {
+                LayerAlert1("vip用户和官方不能支付");
+                return false;
+            }
+
             var chk_value = [];
             var no_chk_value = [];
             $('input[name="cartpro"]').each(function () {
