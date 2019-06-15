@@ -213,6 +213,8 @@
                         window.location.href = "commission.html"
                     })
 
+                    localStorage.setItem('total_profit', Number(localStorage.getItem('total_profit')) - parseFloat(num))
+
                 })
             })
         })
