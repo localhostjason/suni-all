@@ -351,7 +351,7 @@
                     },
                 ]
             });
-        })
+        });
 
         $('.logout').click(function () {
             var data = {
@@ -367,6 +367,10 @@
 
                 window.location.href = 'login.html?code=' + localStorage.getItem('code')
             })
+        });
+
+        sendAjax('api/user/' + localStorage.getItem('user_id'), '', 'GET', function (resp) {
+            localStorage.setItem('total_profit', resp.total_profit);
         })
     })
 </script>
