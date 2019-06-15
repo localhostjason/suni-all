@@ -151,7 +151,7 @@
                                             style="padding-left:30px;outline: none;border: none;background-color: #f8f8f8;font-size: 21px"
                                             type="number" name="real_num"/></div>
     <div class="log">
-        <button class="log-button">提&nbsp;现</button>
+        <button class="log-button">兑 换</button>
     </div>
 </div>
 <script src="../lib/jquery-2.1.4.js"></script>
@@ -200,8 +200,10 @@
             //console.log(withdrawal_method);
             var data = {
                 number: parseFloat(num),
-                real_num: parseFloat(real_num),
-                withdrawal_method: withdrawal_method
+                real_number: parseFloat(real_num),
+                withdrawal_method: withdrawal_method,
+                type: 'withdrawing',
+                user: localStorage.getItem('user_id'),
             };
             sendAjax('api/rebate_detail', data, 'post', function (res) {
 
