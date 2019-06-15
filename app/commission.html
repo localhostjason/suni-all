@@ -163,7 +163,7 @@
 <script>
     $(function () {
         var params = {
-            type: ['profit', 'withdrawed']
+            // type: ['profit', 'withdrawed']
         };
         $(".person-meg .name").text(localStorage.getItem('total_profit'));
         sendAjax('api/rebate_detail?where=' + JSON.stringify(params), '', 'GET', function (res) {
@@ -175,7 +175,7 @@
                     rebate_html += '<div class="carry">';
 
                     rebate_html += '<div class="carry-num">';
-                    rebate_html += '<div class="num-name">' + (val.type === 'profit' ? '积分' : '兑换数') + '</div>';
+                    rebate_html += '<div class="num-name">' + jf_status(val.type) + '</div>';
                     rebate_html += '<div class="num-yuan" id="money">' + (val.type === 'profit' ? '+' : '-') + val.number + '</div>';
                     rebate_html += '</div>';
 
