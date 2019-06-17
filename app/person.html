@@ -129,7 +129,7 @@
 <div class="per-title">
     <div class="person">
         <div class="person-meg">
-            <div><img src="images/portrait.png"></div>
+            <div><img class="user-img" src="images/portrait.png"></div>
             <div class="meg-tt">
                 <p class="name"></p>
                 <p class="yong">积分:<span class="user_profit"></span></p>
@@ -371,6 +371,8 @@
 
         sendAjax('api/user/' + localStorage.getItem('user_id'), '', 'GET', function (resp) {
             localStorage.setItem('total_profit', resp.total_profit);
+            if (resp.img_url)
+                $('.user-img').attr('src', _BASE_API + resp.img_url)
         })
     })
 </script>
