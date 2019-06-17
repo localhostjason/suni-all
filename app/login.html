@@ -98,6 +98,8 @@
                     });
                     if (info.length) {
                         localStorage.setItem('discount', info[0].discount / 100)
+                    } else {
+                        localStorage.setItem('discount', 1)
                     }
 
                     LayerAlert1("登录成功");

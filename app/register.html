@@ -233,6 +233,7 @@
             var data = {phone: tel, password: password, code: code};
             sendAjax('api/register', data, 'post', function (res) {
                 LayerAlert1("注册成功");
+                window.location.href = 'login.html'
             }, false)
         })
     })

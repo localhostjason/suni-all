@@ -637,6 +637,17 @@
 </script>
 <script>
     $(document).ready(function () {
+        sendAjax('api/user_profit', '', 'get', function (resp) {
+            var info = resp._items.filter(function (val) {
+                return val.type === type
+            });
+            if (info.length) {
+                localStorage.setItem('discount', info[0].discount / 100)
+            } else {
+                localStorage.setItem('discount', 1)
+            }
+        });
+
         sendAjax('api/user/' + localStorage.getItem('user_id'), '', 'GET', function (resp) {
             if (resp.img_url)
                 $('.user-img').attr('src', _BASE_API + resp.img_url)
