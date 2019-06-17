@@ -194,14 +194,14 @@
 </script>
 <script>
     $(function () {
-        $('.return_href').attr('href', 'login.html?code=' + localStorage.getItem('code'));
+        $('.return_href').attr('href', 'login.html');
 
         $(".login-button").on('click', function () {
             var tel = $("input[name='phone']").val();
             var password = $("input[name='password']").val();
             var code = $("input[name='code']").val();
 
-            if (tel == '') {
+            if (tel === '') {
                 LayerAlert1("请输入手机号");
                 return false;
             }

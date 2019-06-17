@@ -178,19 +178,19 @@
             var newphone = $("input[name='newphone']").val();
             var newcode = $("input[name='newcode']").val();
             var code = $("input[name='code']").val();
-            if (code == '') {
+            if (code === '') {
                 LayerAlert1("请输入验证码");
                 return false;
             }
-            if (newphone == '') {
+            if (newphone === '') {
                 LayerAlert1("请输入新手机号");
                 return false;
             }
-            if (checkPhone(newphone) == false) {
+            if (checkPhone(newphone) === false) {
                 LayerAlert1("新手机号格式不正确");
                 return false;
             }
-            if (newcode == '') {
+            if (newcode === '') {
                 LayerAlert1("请输入新验证码");
                 return false;
             }
