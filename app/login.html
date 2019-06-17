@@ -101,7 +101,9 @@
                 localStorage.setItem('code', wx_code);
 
                 sendAjax('api/user_profit', '', 'get', function (resp) {
-                    var info = resp._items.filter(val => val.type === type);
+                    var info = resp._items.filter(function (val)  {
+                        return val.type === type
+                    });
                     if (info.length) {
                         localStorage.setItem('discount', info[0].discount / 100)
                     }

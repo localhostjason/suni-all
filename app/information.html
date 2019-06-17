@@ -52,11 +52,12 @@
 <div class="form">
 
     <a class="weui-cell weui-cell_access form-cell bgcolor" href="javascript:;">
-        <input id="uploaderInput" class="weui-uploader__input" type="file" accept="image/*"/>
+        <input id="uploaderInput" class="weui-uploader__input" type="file" accept="image/*"
+               onchange="handleFiles(this)"/>
         <div class="weui-cell__bd">
             <p class="wen">头像</p>
         </div>
-        <div class="weui-cell__ft"><img src="images/header.png"></div>
+        <div class="weui-cell__ft"><img class="show-user-img" src="images/header.png"></div>
     </a>
     <div class="pad"></div>
     <a class="weui-cell weui-cell_access form-cell bgcolor" href="phone.html">
@@ -123,6 +124,44 @@
 </script>
 <script src="../js/jquery-weui.js"></script>
 
+<script>
+    function handleFiles(obj) {
+        var file = obj.files[0];
+        var imageType = /image.*/;
+
+        if (!file.type.match(imageType)) return;
+
+        var form_data = new FormData();
+        form_data.append('file', file);
+
+        if (form_data) {
+            var url_site = BASE_API + 'import/user/img/' + localStorage.getItem('user_id');
+            var token = localStorage.getItem("token");
+            var header = {'Authorization': 'Bearer ' + token};
+            $.ajax({
+                type: 'POST',
+                url: url_site,
+                data: form_data,
+                headers: header,
+                async: true,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (r) {
+                    LayerAlert1("上传成功");
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 1000)
+                },
+                error: function f1(re) {
+                    LayerAlert1("上传失败");
+
+                }
+            })
+        }
+    }
+</script>
+
 </body>
 <script>
     $(function () {
@@ -138,6 +177,8 @@
             $("#we_chart").html(res.we_chart);
             $("#alipay").html(res.alipay);
             $("#bank_card").html(res.bank_card);
+            if (res.img_url)
+                $('.show-user-img').attr('src', _BASE_API + res.img_url)
         })
     })
 </script>
