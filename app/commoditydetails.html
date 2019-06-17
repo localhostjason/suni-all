@@ -378,7 +378,6 @@
             btn.addClass('pay_');
             btn.removeClass('join_');
         } else {
-            get_data();
             btn.addClass('join_');
             btn.removeClass('pay_');
         }
@@ -526,6 +525,7 @@
             sendAjax('api/shopping_cart', data, 'POST', function (resp) {
                 get_data();
                 $(".cov").hide();
+                get_data();
             });
 
         });
