@@ -184,7 +184,7 @@
 <!--</div>-->
 <div class="recommend">
     <div class="recommend-list">
-        <a>
+        <!--<a>
             <div class="list"  >
                 <div class="list-biao">
                     <div class="list-up">
@@ -263,7 +263,7 @@
                     </div>
                 </div>
             </div>
-        </a>
+        </a>-->
     </div>
 </div>
 <div class = "cov" style="display: none">
@@ -317,6 +317,51 @@
   $(function() {
     FastClick.attach(document.body);
   });
+
+    function get_commodity() {
+        var params = {
+            offline: false,
+        };
+        var embedded = {
+            imgs: true,
+            spec: true
+        };
+        sendAjax('api/commodity?where=' + JSON.stringify(params) + '&embedded=' + JSON.stringify(embedded), '', 'GET', function (resp) {
+            var data = resp._items.filter(function (val) {
+                if (!val.user_type) return true;
+                var utype = val.user_type.split(',');
+                return $.inArray(localStorage.getItem('user_type'), utype) > -1
+            });
+            var sale_html = '';
+            var b_img_html = '';
+
+            if (data.length) {
+                data.forEach(function (val, index) {
+
+
+                    // 近期热卖商品
+                    var img = filter_val(val.imgs, 'is_desc', false, 'url');
+
+
+                    sale_html += '';
+
+                    sale_html += '<div class="list"><a href="commoditydetails.html?id=' + val.id + '"><div class="list-biao"><div class="list-up">';
+                    if (img) {
+                        sale_html += '<img src="' + _BASE_API + img + '">';
+                    } else {
+                        sale_html += '<span></span>';
+                    }
+                    sale_html += '</div><div class="list-down"><div class="down-name">' + val.name + '</div>';
+
+                    sale_html += '<div class="price"><div class="dowan-price">¥' + (val.spec.length ? (val.spec[0].price * localStorage.getItem('discount')) : '--') + '</div>';
+                    sale_html += '<div class="down-num">月销' + (val.monthly_sales || 0) + '</div>';
+                    sale_html += '</div></div></div></a></div>';
+                })
+            }
+            $('.recommend-list').html(sale_html);
+        })
+    }
+    get_commodity();
 </script>
 <script src="../js/jquery-weui.js"></script>
 

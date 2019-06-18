@@ -198,11 +198,11 @@
                         var section_list_html = '';
                         val.commodity_second_type.forEach(function (info) {
 
-                            section_list_html += '<div class="list">';
+                            section_list_html += '<a href="search.html?commodity_second=' + info.id + '"><div class="list">';
                             section_list_html += '<div class="list-juti"><span>' + info.name + '</span>';
                             section_list_html += '<div class="tu"><img src="images/huli.png"></div>';
                             section_list_html += '</div>';
-                            section_list_html += '</div>';
+                            section_list_html += '</div></a>';
                         });
                         section_html += section_list_html;
                         section_html += '</section>';
