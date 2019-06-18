@@ -414,7 +414,8 @@
         var embedded = {
             imgs: true,
             spec: true,
-            attr: true
+            attr: true,
+            shopping_cart: true
         };
         var sorts = 'attr_name';
         sendAjax('api/commodity/' + id + '?embedded=' + JSON.stringify(embedded) + '&sort=' + sorts, '', 'GET', function (resp) {
@@ -438,7 +439,10 @@
             $(".desc_img").html(desc_img_html);
 
             //购物车数量
-            $('.car .right').text(resp.shopping_cart.length || 0);
+            var cart_num = resp.shopping_cart.filter(function (val) {
+                return val.user === Number(localStorage.getItem('user_id'))
+            });
+            $('.car .right').text(cart_num.length || 0);
 
             var attr = group_type(resp.attr, 'attr_name', 'attr_value');
 
