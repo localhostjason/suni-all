@@ -419,7 +419,7 @@
         var sorts = 'attr_name';
         sendAjax('api/commodity/' + id + '?embedded=' + JSON.stringify(embedded) + '&sort=' + sorts, '', 'GET', function (resp) {
             $('.details-wen .name').text(resp.name);
-            $('.details-wen .yuan span').text(resp.spec.length ? (resp.spec[0].price * localStorage.getItem('discount')) : '--');
+            $('.details-wen .yuan span').text(resp.spec.length ? (resp.spec[0].price * localStorage.getItem('discount')).toFixed(2) : '--');
             $('.details-wen .num span').text(resp.monthly_sales || 0);
 
             // 商品图片
@@ -474,12 +474,12 @@
                 resp.spec.forEach(function (info, index) {
                     if (index === 0) {
                         spec_id.val(info.id);
-                        j_content_html += '<p class="price active" price_id="' + info.id + '" price="' + info.price * localStorage.getItem('discount') + '">' + info.param + '</p>'
+                        j_content_html += '<p class="price active" price_id="' + info.id + '" price="' + (info.price * localStorage.getItem('discount')).toFixed(2) + '">' + info.param + '</p>'
                     } else
-                        j_content_html += '<p class="price" price_id="' + info.id + '" price="' + info.price * localStorage.getItem('discount') + '">' + info.param + '</p>'
+                        j_content_html += '<p class="price" price_id="' + info.id + '" price="' + (info.price * localStorage.getItem('discount')).toFixed(2) + '">' + info.param + '</p>'
                 });
 
-                $('.price-num').text(resp.spec[0].price * localStorage.getItem('discount'))
+                $('.price-num').text((resp.spec[0].price * localStorage.getItem('discount')).toFixed(2))
             }
             $('.j-content').html(j_content_html);
             $('.price').click(function () {

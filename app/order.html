@@ -263,7 +263,7 @@
                             order_html += '<div class="details-right">';
                             order_html += '<div class="right-name">' + info.commodity_name + '</div>';
                             order_html += '<div class="right-price">';
-                            order_html += '<div class="price">￥ ' + info.spec_price * localStorage.getItem('discount') + '</div>';
+                            order_html += '<div class="price">￥ ' + (info.spec_price * localStorage.getItem('discount')).toFixed(2) + '</div>';
                             order_html += '<div class="num">* ' + info.number + '</div>';
                             order_html += '</div>';
                             order_html += '</div>';

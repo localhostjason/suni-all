@@ -391,22 +391,7 @@
 <!--<div class="recommend">
     <div class="biaoti">为你推荐</div>
     <div class="recommend-list">
-        <a>
-            <div class="list">
-                <div class="list-biao">
-                    <div class="list-up">
-                        <img src="images/shangping1.png">
-                    </div>
-                    <div class="list-down">
-                        <div class="down-name">商品名称商品名称商品名称商品名称</div>
-                        <div class="price">
-                            <div class="dowan-price">¥188.00</div>
-                            <div class="down-num">月销6666</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
+
     </div>
 </div>-->
 <div class="cov">
@@ -505,7 +490,7 @@
                     sale_html += '<div class="details-right">';
                     sale_html += '<div class="right-name">' + val.name + '</div>';
                     sale_html += '<div class="right-price">';
-                    sale_html += '<div class="pric"><p class="yuan">¥' + (val.spec.length ? (val.spec[0].price * localStorage.getItem('discount')) : '--') + '</p>';
+                    sale_html += '<div class="pric"><p class="yuan">¥' + (val.spec.length ? (val.spec[0].price * localStorage.getItem('discount')).toFixed(2) : '--') + '</p>';
                     sale_html += '<p class="xiao">月销' + (val.monthly_sales || 0) + '</p></div>';
                     sale_html += '<a href="commoditydetails.html?id=' + val.id + '"><div class="num">立即购买</div></a>';
                     sale_html += '</div>';

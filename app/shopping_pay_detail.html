@@ -256,7 +256,7 @@
             });
             price = spec.length ? spec[0].price : 0;
             com_detail_html += '<div class="right-name">' + data.name + '</div>' +
-                '<div class="right-price"><div class="price">￥' + price * localStorage.getItem('discount') + '</div>' +
+                '<div class="right-price"><div class="price">￥' + (price * localStorage.getItem('discount')).toFixed(2) + '</div>' +
                 '<div class="num">*' + getUrlParam('number') + '</div></div>';
 
             com_detail_html += '</div>';
@@ -271,7 +271,7 @@
             });
             $('.com-detail').html(com_detail_html)
         });
-        $('.total-amount').text(price * Number(getUrlParam('number') * localStorage.getItem('discount')));
+        $('.total-amount').text((price * Number(getUrlParam('number') * localStorage.getItem('discount'))).toFixed(2));
 
 
         // 提交订单
@@ -284,7 +284,7 @@
 
             var data = {
                 user: Number(localStorage.getItem('user_id')),
-                amount: price * Number(getUrlParam('number')) * localStorage.getItem('discount'),
+                amount: (price * Number(getUrlParam('number')) * localStorage.getItem('discount')).toFixed(2),
                 number: Number(getUrlParam('number')),
                 commodity_info: JSON.stringify(commodity_info),
                 commodity: commodity,

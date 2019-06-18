@@ -259,14 +259,14 @@
                     com_detail_html += '<div class="details-right">';
 
                     com_detail_html += '<div class="right-name">' + val.commodity.name + '</div>' +
-                        '<div class="right-price"><div class="price">￥' + val.spec.price * localStorage.getItem('discount') + '</div>' +
+                        '<div class="right-price"><div class="price">￥' + (val.spec.price * localStorage.getItem('discount')).toFixed(2) + '</div>' +
                         '<div class="num">*' + val.number + '</div></div>';
 
                     com_detail_html += '</div>';
 
                     com_detail_html += '</div></a>';
 
-                    total.push(val.number * val.spec.price * localStorage.getItem('discount'));
+                    total.push((val.number * val.spec.price * localStorage.getItem('discount')).toFixed(2));
 
                     //订单提交数据
                     commodity.push(val.commodity.id);
