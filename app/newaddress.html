@@ -203,6 +203,7 @@
 
 <div class="log">
     <button class="log-button">确&nbsp;认</button>
+    <button class="delete-button">删&nbsp;除</button>
 </div>
 <!--<div class="button">-->
 <!--<button class="log-btn">删&nbsp;除</button>-->
@@ -416,6 +417,17 @@
                     window.location.href = "addressmanagement.html";
                 })
             }
+        })
+
+
+        $('.delete-button').click(function () {
+            sendAjax('api/address/' + id, '', 'delete', function (res) {
+
+            });
+            setTimeout(function () {
+                LayerAlert1("删除成功");
+                window.location.href = "addressmanagement.html";
+            }, 500)
         })
     })
 </script>
