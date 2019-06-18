@@ -197,9 +197,9 @@
             合计: <span class="heji-number"></span>
         </div>
         <div class="anniu">
-<!--            <div class="shan">-->
-<!--                <a href="javascript:;" class="wy-delete">删除</a>-->
-<!--            </div>-->
+            <div class="shan">
+                <a href="javascript:;" class="wy-delete">删除</a>
+            </div>
             <a href="javascript:void (0)">
                 <div class="jiesuan">
                     <p>结算</p>
@@ -450,8 +450,11 @@
             if (chk_value.length) {
                 chk_value.forEach(function (value) {
                     sendAjax('api/shopping_cart/' + value, '', 'delete', function (resp) {
-                        get_shopping_cart();
+                        //get_shopping_cart();
                     })
+                    setTimeout(function () {
+                        get_shopping_cart();
+                    }, 1000)
                 })
             }
             console.log(chk_value);
