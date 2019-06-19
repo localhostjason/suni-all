@@ -100,9 +100,10 @@
             font-size: 12px;
             color: #9F9F9F;
         }
-		.checkbox01 a{
-			font-size: 12px;
-		}
+
+        .checkbox01 a {
+            font-size: 12px;
+        }
 
         a {
             text-decoration: none;
@@ -136,11 +137,16 @@
             <input class="weui-input" type="password" placeholder="请输入您的密码" name="twopassword">
         </div>
     </div>
+    <div class="cell">
+        <div class="cell-phon">
+            <input class="weui-input" placeholder="邀请码" name="ac_code">
+        </div>
+    </div>
 
     <div class="checkbox01">
         <input type="checkbox" id="btn1" name="btn" value="1"/>
         <label for="btn1" class="xie">我已阅读并同意</label>
-		<a href="register_agreement.html" style="color: #9F9F9F;">《塑妮用户注册使用协议》</a>
+        <a href="register_agreement.html" style="color: #9F9F9F;">《塑妮用户注册使用协议》</a>
     </div>
 </form>
 
@@ -166,7 +172,7 @@
 <script>
     var bt01 = document.getElementById("bt01");
     bt01.onclick = function () {
-        if ($("input[name='phone']").val() == '') {
+        if ($("input[name='phone']").val() === '') {
             LayerAlert1("请输入手机号");
             return false;
         }
@@ -208,23 +214,23 @@
                 LayerAlert1("请输入手机号");
                 return false;
             }
-            if (checkPhone(tel) == false) {
+            if (checkPhone(tel) === false) {
                 LayerAlert1("手机号格式不正确");
                 return false;
             }
-            if (code == '') {
+            if (code === '') {
                 LayerAlert1("请输入验证码");
                 return false;
             }
-            if (password == '') {
+            if (password === '') {
                 LayerAlert1("请输入密码");
                 return false;
             }
-            if ($("input[name='twopassword']").val() == '') {
+            if ($("input[name='twopassword']").val() === '') {
                 LayerAlert1("请再次输入密码");
                 return false;
             }
-            if ($("input[name='twopassword']").val() != password) {
+            if ($("input[name='twopassword']").val() !== password) {
                 LayerAlert1("两次密码输入不一致");
                 return false;
             }
@@ -233,12 +239,46 @@
                 LayerAlert1("请勾选用户注册使用协议");
                 return false;
             }
+
+            var ac_code = $('input[name="ac_code"]').val();
             var data = {phone: tel, password: password, code: code};
+            if (ac_code) {
+                // 邀请码存在，得到邀请码user id
+                var ac_params = {
+                    code: ac_code
+                };
+                sendAjax('api/ac_code/info', ac_params, 'POST', function (resp) {
+                    register_user(data, resp.post_id)
+                });
+            } else {
+                register_user(data, null)
+            }
+        });
+
+        function register_user(data, owner_id) {
             sendAjax('api/register', data, 'post', function (res) {
-                LayerAlert1("注册成功");
-                window.location.href = 'login.html'
+
+                if (owner_id) {
+                    // 邀请码存在 关联上下关系，else 跳转首页
+                    var params = {
+                        owner: owner_id,
+                        join_time: timeStamp2String(new Date().getTime())
+                    };
+                    sendAjax('api/user/' + res.id, params, 'patch', function (r) {
+                        LayerAlert1("注册成功");
+                        setTimeout(function () {
+                            window.location.href = 'login.html'
+                        }, 500)
+                    }, false);
+                } else {
+                    LayerAlert1("注册成功");
+                    setTimeout(function () {
+                        window.location.href = 'login.html'
+                    }, 500)
+                }
+
             }, false)
-        })
+        }
     })
 </script>
 </html>
