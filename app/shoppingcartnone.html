@@ -57,7 +57,7 @@
         }
 
         .xiang-left .left-title {
-            font-size: 7px;
+            font-size: 14px;
             color: #101010;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -317,7 +317,9 @@
             $("input[name=all-sec]").prop('checked', all_chk.length === checked_val.length);
         }
         get_each();
-
+		$(".weui-check__label").click(function(){
+			get_each();
+		})
         function get_each() {
             var amount_total = [];
             $('input[name="cartpro"]:checked').each(function () {

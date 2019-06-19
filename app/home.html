@@ -104,7 +104,7 @@
             padding: 0 4%;
             height: auto;
             background-color: #FFFFFF;
-            margin-bottom: 25px;
+            margin-bottom: 48px;
         }
 
         .biaoti {
@@ -491,7 +491,7 @@
                     sale_html += '<div class="right-name">' + val.name + '</div>';
                     sale_html += '<div class="right-price">';
                     sale_html += '<div class="pric"><p class="yuan">¥' + (val.spec.length ? (val.spec[0].price * localStorage.getItem('discount')).toFixed(2) : '--') + '</p>';
-                    sale_html += '<p class="xiao">月销' + (val.monthly_sales || 0) + '</p></div>';
+                    //sale_html += '<p class="xiao">月销' + (val.monthly_sales || 0) + '</p></div>';
                     sale_html += '<a href="commoditydetails.html?id=' + val.id + '"><div class="num">立即购买</div></a>';
                     sale_html += '</div>';
                     sale_html += '</div>';
