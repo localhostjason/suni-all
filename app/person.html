@@ -133,6 +133,7 @@
             <div class="meg-tt">
                 <p class="name"></p>
                 <p class="yong">积分:<span class="user_profit"></span></p>
+                <p class="user_type"></p>
             </div>
         </div>
         <div class="person-tt logout"><img src="images/tiao.png"></div>
@@ -335,6 +336,8 @@
 </script>
 <script>
     $(function () {
+        $('.user_type').text(sessionStorage.getItem('user_type'));
+
         $('.user_profit').text(sessionStorage.getItem('total_profit') || 0);
         $('.meg-tt .name').text(sessionStorage.getItem('phone'))
 
