@@ -47,6 +47,8 @@
 }
 .weui-input {
     padding-left: 18px;
+	height:45px;
+	line-height:45px;
 }
 
 .login-button { /* 按钮美化 */
