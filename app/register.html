@@ -258,6 +258,7 @@
         function register_user(data, owner_id) {
             sendAjax('api/register', data, 'post', function (res) {
 
+                sessionStorage.setItem("token", res.token);
                 if (owner_id) {
                     // 邀请码存在 关联上下关系，else 跳转首页
                     var params = {
@@ -269,7 +270,7 @@
                         setTimeout(function () {
                             window.location.href = 'login.html'
                         }, 500)
-                    }, false);
+                    });
                 } else {
                     LayerAlert1("注册成功");
                     setTimeout(function () {
