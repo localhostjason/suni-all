@@ -215,7 +215,7 @@
     $(document).ready(function (resp) {
         // todo 插入支付接口
         $('.pay').click(function () {
-            var role = sessionStorage.getItem('user_type');
+            var role = localStorage.getItem('user_type');
             if (role === 'vip_user' || role === 'official_user') {
                 LayerAlert1("VIP用户和官方请向董事订购");
                 return false;
@@ -229,7 +229,7 @@
             }
 
             var data = {
-                user_id: sessionStorage.getItem('user_id'),
+                user_id: localStorage.getItem('user_id'),
                 order_id: order,
                 total_fee: Number(getUrlParam('amount'))
             };

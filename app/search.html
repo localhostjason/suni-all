@@ -330,7 +330,7 @@
             var data = resp._items.filter(function (val) {
                 if (!val.user_type) return true;
                 var utype = val.user_type.split(',');
-                return $.inArray(sessionStorage.getItem('user_type'), utype) > -1
+                return $.inArray(localStorage.getItem('user_type'), utype) > -1
             });
             var sale_html = '';
             var b_img_html = '';
@@ -353,7 +353,7 @@
                     }
                     sale_html += '</div><div class="list-down"><div class="down-name">' + val.name + '</div>';
 
-                    sale_html += '<div class="price"><div class="dowan-price">¥' + (val.spec.length ? (val.spec[0].price * sessionStorage.getItem('discount')).toFixed(2) : '--') + '</div>';
+                    sale_html += '<div class="price"><div class="dowan-price">¥' + (val.spec.length ? (val.spec[0].price * localStorage.getItem('discount')).toFixed(2) : '--') + '</div>';
                     sale_html += '<div class="down-num">月销' + (val.monthly_sales || 0) + '</div>';
                     sale_html += '</div></div></div></a></div>';
                 })

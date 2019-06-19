@@ -203,11 +203,11 @@
                 real_number: parseFloat(real_num),
                 withdrawal_method: withdrawal_method,
                 type: 'withdrawing',
-                user: sessionStorage.getItem('user_id'),
+                user: localStorage.getItem('user_id'),
             };
             sendAjax('api/rebate_detail', data, 'post', function (res) {
 
-                sendAjax('api/user/' + sessionStorage.getItem('user_id'), '', 'GET', function (resp) {
+                sendAjax('api/user/' + localStorage.getItem('user_id'), '', 'GET', function (resp) {
                     LayerAlert1("兑换成功");
                     setTimeLoad(function () {
                         window.location.href = "commission.html"
