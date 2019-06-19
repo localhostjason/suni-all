@@ -248,7 +248,7 @@
                     code: ac_code
                 };
                 sendAjax('api/ac_code/info', ac_params, 'POST', function (resp) {
-                    var data = Object.assign(data, {type: 'vip_user', initial_fee: 9980});
+                    data = {phone: tel, password: password, code: code, type: 'vip_user', initial_fee: 9980};
                     register_user(data, resp.post_id)
                 });
             } else {
