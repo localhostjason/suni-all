@@ -106,7 +106,7 @@
 
 </body>
 <script>
-    var phone = localStorage.getItem('phone');
+    var phone = sessionStorage.getItem('phone');
 
     $("input[name='phone']").val(phone);
     var bt01 = document.getElementById("bt01");
@@ -202,7 +202,7 @@
             };
             sendAjax('api/change/phone', data, 'post', function (res) {
                 LayerAlert1("更换成功");
-                localStorage.setItem('phone', newphone);
+                sessionStorage.setItem('phone', newphone);
                 setTimeLoad(function () {
                     window.location.href = "information.html"
                 })

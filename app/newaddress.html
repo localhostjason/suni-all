@@ -404,7 +404,7 @@
                 area: area,
                 address: address,
                 is_default: is_default === 'true',
-                user: localStorage.getItem('user_id')
+                user: sessionStorage.getItem('user_id')
             };
             if (id) {
                 sendAjax('api/address/' + id, data, 'patch', function (res) {

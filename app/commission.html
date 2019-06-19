@@ -162,14 +162,14 @@
 </body>
 <script>
     $(function () {
-        sendAjax('api/user/' + localStorage.getItem('user_id'), '', 'GET', function (resp) {
-            localStorage.setItem('total_profit', resp.total_profit);
+        sendAjax('api/user/' + sessionStorage.getItem('user_id'), '', 'GET', function (resp) {
+            sessionStorage.setItem('total_profit', resp.total_profit);
         });
 
         var params = {
             // type: ['profit', 'withdrawed']
         };
-        $(".person-meg .name").text(localStorage.getItem('total_profit'));
+        $(".person-meg .name").text(sessionStorage.getItem('total_profit'));
         sendAjax('api/rebate_detail?where=' + JSON.stringify(params), '', 'GET', function (res) {
             // $("#money").html(res.money);
             var rebates = res._items;

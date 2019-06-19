@@ -85,21 +85,21 @@
                 var token = res.token;
                 var type = res.type;
 
-                localStorage.setItem("user_id", res.data.id);
-                localStorage.setItem('phone', res.data.phone);
-                localStorage.setItem("user_type", res.data.type);
-                localStorage.setItem("role", res.type);
-                localStorage.setItem("token", token);
-                localStorage.setItem('total_profit', res.total_profit);
+                sessionStorage.setItem("user_id", res.data.id);
+                sessionStorage.setItem('phone', res.data.phone);
+                sessionStorage.setItem("user_type", res.data.type);
+                sessionStorage.setItem("role", res.type);
+                sessionStorage.setItem("token", token);
+                sessionStorage.setItem('total_profit', res.total_profit);
 
                 sendAjax('api/user_profit', '', 'get', function (resp) {
                     var info = resp._items.filter(function (val) {
                         return val.type === type
                     });
                     if (info.length) {
-                        localStorage.setItem('discount', info[0].discount / 100)
+                        sessionStorage.setItem('discount', info[0].discount / 100)
                     } else {
-                        localStorage.setItem('discount', 1)
+                        sessionStorage.setItem('discount', 1)
                     }
 
                     LayerAlert1("登录成功");

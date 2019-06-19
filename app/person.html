@@ -335,8 +335,8 @@
 </script>
 <script>
     $(function () {
-        $('.user_profit').text(localStorage.getItem('total_profit') || 0);
-        $('.meg-tt .name').text(localStorage.getItem('phone'))
+        $('.user_profit').text(sessionStorage.getItem('total_profit') || 0);
+        $('.meg-tt .name').text(sessionStorage.getItem('phone'))
 
         $('.service').on('click', function () {
             //如果参数过多，通过 object 方式传入
@@ -355,22 +355,22 @@
 
         $('.logout').click(function () {
             var data = {
-                token: localStorage.getItem('token')
+                token: sessionStorage.getItem('token')
             };
             sendAjax('api/logout', data, 'POST', function (resp) {
-                localStorage.removeItem('phone');
-                localStorage.removeItem('user_id');
-                localStorage.removeItem('token');
-                localStorage.removeItem('total_profit');
-                localStorage.removeItem('user_type');
-                localStorage.removeItem('role');
+                sessionStorage.removeItem('phone');
+                sessionStorage.removeItem('user_id');
+                sessionStorage.removeItem('token');
+                sessionStorage.removeItem('total_profit');
+                sessionStorage.removeItem('user_type');
+                sessionStorage.removeItem('role');
 
                 window.location.href = 'login.html'
             })
         });
 
-        sendAjax('api/user/' + localStorage.getItem('user_id'), '', 'GET', function (resp) {
-            localStorage.setItem('total_profit', resp.total_profit);
+        sendAjax('api/user/' + sessionStorage.getItem('user_id'), '', 'GET', function (resp) {
+            sessionStorage.setItem('total_profit', resp.total_profit);
             if (resp.img_url)
                 $('.user-img').attr('src', _BASE_API + resp.img_url)
         })

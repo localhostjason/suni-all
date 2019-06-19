@@ -178,13 +178,13 @@
 <script src="../js/jquery-weui.js"></script>
 <script>
     $(function () {
-        sendAjax('api/ac_code?user_id=' + localStorage.getItem('user_id'), '', 'GET', function (resp) {
+        sendAjax('api/ac_code?user_id=' + sessionStorage.getItem('user_id'), '', 'GET', function (resp) {
             var code = resp.code;
             $('.person-meg .name').text(code)
         });
 
         function get_team() {
-            sendAjax('api/team?user_id=' + localStorage.getItem('user_id'), '', 'GET', function (resp) {
+            sendAjax('api/team?user_id=' + sessionStorage.getItem('user_id'), '', 'GET', function (resp) {
                 var data = resp.data;
                 var team_htm = '';
                 if (data.length) {
@@ -221,14 +221,14 @@
 
             var data = {
                 code: code,
-                owner: localStorage.getItem('user_id')
+                owner: sessionStorage.getItem('user_id')
             };
             sendAjax('api/ac_code/info', data, 'POST', function (resp) {
                 //    todo 刷新
                 var post_id = resp.post_id;
                 console.log(post_id);
                 var params = {
-                    owner: localStorage.getItem('user_id'),
+                    owner: sessionStorage.getItem('user_id'),
                     join_time: timeStamp2String(new Date().getTime())
                 };
                 sendAjax('api/user/' + post_id, params, 'patch', function (r) {

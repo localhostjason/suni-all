@@ -103,7 +103,7 @@
 </body>
 <script>
     $(function () {
-        var user_id = localStorage.getItem('user_id');
+        var user_id = sessionStorage.getItem('user_id');
 
         $(".log-button").on('click', function () {
             var idnumber = $("input[name='idnumber']").val()

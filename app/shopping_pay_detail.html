@@ -256,7 +256,7 @@
             });
             price = spec.length ? spec[0].price : 0;
             com_detail_html += '<div class="right-name">' + data.name + '</div>' +
-                '<div class="right-price"><div class="price">￥' + (price * localStorage.getItem('discount')).toFixed(2) + '</div>' +
+                '<div class="right-price"><div class="price">￥' + (price * sessionStorage.getItem('discount')).toFixed(2) + '</div>' +
                 '<div class="num">*' + getUrlParam('number') + '</div></div>';
 
             com_detail_html += '</div>';
@@ -271,20 +271,20 @@
             });
             $('.com-detail').html(com_detail_html)
         });
-        $('.total-amount').text((price * Number(getUrlParam('number') * localStorage.getItem('discount'))).toFixed(2));
+        $('.total-amount').text((price * Number(getUrlParam('number') * sessionStorage.getItem('discount'))).toFixed(2));
 
 
         // 提交订单
         $('.zhifu-tt').click(function (resp) {
-            var role = localStorage.getItem('role');
+            var role = sessionStorage.getItem('role');
             if (role === 'vip_user' || role === 'official_user') {
                 LayerAlert1("VIP用户和官方请向董事订购");
                 return false;
             }
 
             var data = {
-                user: Number(localStorage.getItem('user_id')),
-                amount: (price * Number(getUrlParam('number')) * localStorage.getItem('discount')).toFixed(2),
+                user: Number(sessionStorage.getItem('user_id')),
+                amount: (price * Number(getUrlParam('number')) * sessionStorage.getItem('discount')).toFixed(2),
                 number: Number(getUrlParam('number')),
                 commodity_info: JSON.stringify(commodity_info),
                 commodity: commodity,
