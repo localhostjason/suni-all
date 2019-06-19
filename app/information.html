@@ -135,8 +135,8 @@
         form_data.append('file', file);
 
         if (form_data) {
-            var url_site = BASE_API + 'import/user/img/' + localStorage.getItem('user_id');
-            var token = localStorage.getItem("token");
+            var url_site = BASE_API + 'import/user/img/' + sessionStorage.getItem('user_id');
+            var token = sessionStorage.getItem("token");
             var header = {'Authorization': 'Bearer ' + token};
             $.ajax({
                 type: 'POST',
@@ -165,7 +165,7 @@
 </body>
 <script>
     $(function () {
-        var user_id = localStorage.getItem('user_id') || 0;
+        var user_id = sessionStorage.getItem('user_id') || 0;
         // var id_card =  $("#id_card").val();
         // var we_chart =  $("#we_chart").val();
         // var alipay =  $("#alipay").val();

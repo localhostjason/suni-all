@@ -400,7 +400,7 @@
                     shopping_html += '<div class="xiang-left">';
                     shopping_html += '<div class="left-title">' + val.commodity.name + '</div>';
                     shopping_html += '<div class="left-price">';
-                    shopping_html += '<div class="prices">¥<em class="prices-number">' + (val.spec.price * localStorage.getItem('discount')).toFixed(2) + '</em></div>';
+                    shopping_html += '<div class="prices">¥<em class="prices-number">' + (val.spec.price * sessionStorage.getItem('discount')).toFixed(2) + '</em></div>';
                     shopping_html += '<div class="pro-amount fr">';
                     shopping_html += '<div class="Spinner sp' + index + '"></div>';
                     shopping_html += '</div>';
@@ -472,7 +472,7 @@
 <script>
     $(document).ready(function () {
         $('.jiesuan').click(function () {
-            var role = localStorage.getItem('role');
+            var role = sessionStorage.getItem('role');
             if (role === 'vip_user' || role === 'official_user') {
                 LayerAlert1("VIP用户和官方请向董事订购");
                 return false;
