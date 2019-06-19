@@ -396,7 +396,7 @@
 
     </div>
 </div>-->
-<div class="cov">
+<div class="cov" style="display: none">
     <div class="con">
         <div class="ptitle"><img src="images/cover.png"></div>
         <div class="text">购买商品前请先完善个人信息</div>
@@ -637,7 +637,14 @@
 
         sendAjax('api/user/' + sessionStorage.getItem('user_id'), '', 'GET', function (resp) {
             if (resp.img_url)
-                $('.user-img').attr('src', _BASE_API + resp.img_url)
+                $('.user-img').attr('src', _BASE_API + resp.img_url);
+
+            if (resp.phone && resp.real_name && resp.id_card) {
+                $(".cov").hide();
+            } else {
+                $(".cov").show();
+            }
+
         })
     })
 </script>
