@@ -217,7 +217,7 @@
         $('.pay').click(function () {
             var role = localStorage.getItem('user_type');
             if (role === 'vip_user' || role === 'official_user') {
-                LayerAlert1("vip用户和官方不能在线支付");
+                LayerAlert1("VIP用户和官方请向董事订购");
                 return false;
             }
 
