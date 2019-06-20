@@ -284,7 +284,7 @@
 
             var data = {
                 user: Number(sessionStorage.getItem('user_id')),
-                amount: (price * Number(getUrlParam('number')) * sessionStorage.getItem('discount')).toFixed(2),
+                amount: Number((price * Number(getUrlParam('number')) * sessionStorage.getItem('discount')).toFixed(2)),
                 number: Number(getUrlParam('number')),
                 commodity_info: JSON.stringify(commodity_info),
                 commodity: commodity,

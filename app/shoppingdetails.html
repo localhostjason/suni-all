@@ -266,7 +266,7 @@
 
                     com_detail_html += '</div></a>';
 
-                    total.push((val.number * val.spec.price * sessionStorage.getItem('discount')).toFixed(2));
+                    total.push(Number((val.number * val.spec.price * sessionStorage.getItem('discount')).toFixed(2)));
 
                     //订单提交数据
                     commodity.push(val.commodity.id);
